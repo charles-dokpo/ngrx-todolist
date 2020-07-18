@@ -4,15 +4,17 @@
       <h2>Shopping List</h2>
 
       <ul>
-        <li *ngFor="let shopping of shoppingItems | async">
+        <li *ngFor="let shopping of shoppingItems | async" (click)="deleteItem(shopping.id)">
           {{ shopping.name }}
+      <!--  autre option  <li *ngFor="let shopping of shoppingItems | async | keyvalue">
+          {{ shopping | json}}-->
           <br><br>
-        </li>
+        </li> 
       </ul>
     </div>
 
     <form (ngSubmit)="addItem()">
-      <input type="text" [(ngModel)]="newShoppingItem2.name" placeholder="Item" name="itemName"/>
+      <input type="text" [(ngModel)]="newShoppingItem2.name" placeholder="fais ta liste" name="itemName"/>
       <button type="submit" >+</button>
     </form>
   </div>

@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 
 import { ShoppingItem } from './models/shopping-item.model';
 import { AppState } from './app-state.model';
-import { AddItemAction, ADD_ITEM_V2 } from './actions/shopping.actions';
+import { AddItemAction, ADD_ITEM_V2, DELETE_ITEM } from './actions/shopping.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.shoppingItems = this.store.select(store => store.shopping);
+    this.shoppingItems = this.store.select(store => store.shopping2);
+    console.log(this);
   }
 
   addItem() {
@@ -36,6 +37,9 @@ export class AppComponent implements OnInit {
    // this.newShoppingItem = { id: '', name: '' };
 
     this.newShoppingItem2 = { id: '', name: '' };
-    console.log(this);
+  }
+
+  deleteItem(id: string) {
+    this.store.dispatch(DELETE_ITEM({payload : id}));
   }
 }

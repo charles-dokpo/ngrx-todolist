@@ -14,3 +14,5 @@ export class AddItemAction implements Action {
 export type ShoppingAction = AddItemAction;
 
 export const ADD_ITEM_V2 = createAction('[SHOPPING] Add Item', props <{payload: ShoppingItem}>() );
+
+export const DELETE_ITEM = createAction('[SHOPPING] Delete Item', props <{payload: string}>() );
